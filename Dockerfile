@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.0.1
+FROM rocker/r-ver:latest
 
 COPY setup.R .
 RUN Rscript setup.R
