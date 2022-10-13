@@ -15,19 +15,4 @@ A Docker containerized approach for a one-and-done R environment with Gurobi Opt
    docker run -it gurobi  
    ```
 
-3. Install the remotes package within the interactive R session:
-   ```sh
-   install.packages('remotes')
-   ```
-
-4. Install the designmatch package within the interactive R session:
-   ```sh
-   remotes::install_cran('designmatch')
-   ```
-   
-5. Install the slam package within the interactive R session:
-   ```sh
-   install.packages('slam')
-   ```
-
 You are now set up to use and run R, designmatch, and Gurobi for your research purposes.
