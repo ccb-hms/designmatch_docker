@@ -48,9 +48,11 @@ ENV LD_LIBRARY_PATH $GUROBI_HOME/lib
 
 RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.1-2_R_4.0.2.tar.gz",repos = NULL)'
 
-RUN Rscript -e 'install.packages("designmatch",repos = NULL)'
+RUN Rscript -e 'install.packages("remotes")'
 
-RUN Rscript -e "installed.packages()"
+RUN Rscript -e "remotes::install_cran('slam')"
+
+RUN Rscript -e "remotes::install_cran('designmatch')"
 
 WORKDIR /code
 
