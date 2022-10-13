@@ -24,5 +24,10 @@ A Docker containerized approach for a one-and-done R environment with Gurobi Opt
    ```sh
    remotes::install_cran('designmatch')
    ```
+   
+5. Install the slam package within the interactive R session:
+   ```sh
+   install.packages('slam')
+   ```
 
 You are now set up to use and run R, designmatch, and Gurobi for your research purposes.
