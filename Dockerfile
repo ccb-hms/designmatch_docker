@@ -1,26 +1,24 @@
-FROM rocker/r-ver:4.0.2
+#
+# Designmatch / Gurobi Optimizer Image
+# Author: Sam Pullman
+# Copyright: Harvard Medical School
+#
+FROM hmsccb/rstudio-server:4.2.0
 
-COPY setup.R .
-RUN Rscript setup.R
+#------------------------------------------------------------------------------
+# Install Gurobi Optimizer (referencing https://github.com/Gurobi/docker-optimizer/blob/master/9.5.2/Dockerfile)
+#------------------------------------------------------------------------------
 
-# This could be overridden when building 
-ARG GRB_VERSION=9.1.2
-ARG GRB_SHORT_VERSION=9.1
-ARG PYTHON_VERSION=3.8
+ARG GRB_VERSION=9.5.2
+ARG GRB_SHORT_VERSION=9.5
 
-# based on https://github.com/Gurobi/docker-optimizer/blob/master/9.1.2/Dockerfile
+# install gurobi package and copy the files
 WORKDIR /opt
 
-ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        binfmt-support \
-        ca-certificates \
-        libpython${PYTHON_VERSION}-stdlib \
-        python${PYTHON_VERSION} \
-        python${PYTHON_VERSION}-minimal \
-        python${PYTHON_VERSION}-venv  \
-        wget \
+    && apt-get install --no-install-recommends -y\
+       ca-certificates  \
+       wget \
     && update-ca-certificates \
     && wget -v https://packages.gurobi.com/${GRB_SHORT_VERSION}/gurobi${GRB_VERSION}_linux64.tar.gz \
     && tar -xvf gurobi${GRB_VERSION}_linux64.tar.gz  \
@@ -28,31 +26,40 @@ RUN apt-get update \
     && mv -f gurobi* gurobi \
     && rm -rf gurobi/linux64/docs
 
+ARG GRB_VERSION=9.5.2
 
-#run the setup
+LABEL vendor="Gurobi"
+LABEL version=${GRB_VERSION}
+
+# update system and certificates
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y\
+       ca-certificates  \
+       p7zip-full \
+       zip \
+    && update-ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/gurobi/linux64
-RUN python${PYTHON_VERSION} setup.py install
 
-# Add the license key
-# Visit https://license.gurobi.com/manager/doc/overview for more information.
-# You will need to provide your own.
-# by passing it in during runtime: -v gurobi.lic:/opt/gurobi/gurobi.lic
-COPY gurobi.lic /opt/gurobi/gurobi.lic
 
-# now install the R package
-
-ENV GUROBI_HOME /opt/gurobi/linux64
-ENV PATH "$PATH:$GUROBI_HOME/bin"
-ENV LD_LIBRARY_PATH $GUROBI_HOME/lib 
-
-RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.1-2_R_4.0.2.tar.gz",repos = NULL)'
+#------------------------------------------------------------------------------
+# Install R packages (referencing https://github.com/ccb-hms/docker-r-command-line/blob/main/4.2.0.Dockerfile)
+#------------------------------------------------------------------------------
+RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.5-2_R_4.2.0.tar.gz",repos = NULL)'
 
 RUN Rscript -e 'install.packages("remotes")'
+
+RUN Rscript -e 'install.packages("Rgplk")'
 
 RUN Rscript -e "remotes::install_cran('slam')"
 
 RUN Rscript -e "remotes::install_cran('designmatch')"
 
-WORKDIR /code
 
+#------------------------------------------------------------------------------
+# Final odds and ends
+#------------------------------------------------------------------------------
+
+# Set default kerberos configuration
+COPY krb5.conf /etc/krb5.conf
