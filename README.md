@@ -66,3 +66,5 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 
     
 **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes.
+
+**TODO: confirm with Jose if he wants an interactive R session to open, or if he wants to be able to run R scripts without running the interactive session**
