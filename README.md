@@ -32,10 +32,10 @@ This project was created as a way to efficiently supply HMS researchers with the
 If you're not familiar with Docker, you can find a tutorial [here](https://docs.docker.com/get-started/)! Experience
 with Docker is not a necessarry prerequisite to running this code, but will be helpful if you would like to make modifications. 
 
-### Installation
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-# 
-### Installation
+<!-- Installation -->
+## Installation
 
 1. Clone this repo by navigating into your desired base directory, and executing the following command:
    ```sh
