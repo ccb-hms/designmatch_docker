@@ -55,7 +55,8 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    docker build -t gurobi .
    ```
    
-7. Run the container **You will need to change the two -v options before running, please see below for details**:
+7. Run the container 
+   **Note: you will need to change the two -v options before running, please see below for details**:
    ```sh
    docker run -v ~/Desktop/designmatch:/HostData -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic -it --privileged --cgroupns=host designmatch 
    ```
