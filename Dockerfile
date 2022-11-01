@@ -4,14 +4,14 @@
 # Harvard Medical School Center for Computational Biomedicine
 #
 #latest stable release of rocker/r-ver
-FROM rocker/r-ver:4.1.1
+FROM rocker/r-ver:4.0.3
 
 COPY setup.R .
 RUN Rscript setup.R
 
 # This could be overridden when building, this is the latest stable release of gurobi optimizer 
-ARG GRB_VERSION=9.5.2
-ARG GRB_SHORT_VERSION=9.5
+ARG GRB_VERSION=9.1.2
+ARG GRB_SHORT_VERSION=9.1
 ARG PYTHON_VERSION=3.8
 
 # based on https://github.com/Gurobi/docker-optimizer/blob/master/9.1.2/Dockerfile
@@ -48,6 +48,7 @@ ENV LD_LIBRARY_PATH $GUROBI_HOME/lib
 #------------------------------------------------------------------------------
 # Install R packages
 #------------------------------------------------------------------------------
+RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.1-2_R_4.0.2.tar.gz",repos = NULL)'
 RUN Rscript -e "install.packages('lattice')"
 RUN Rscript -e "install.packages('mass')"
 RUN Rscript -e "install.packages('slam')"
