@@ -9,7 +9,8 @@ FROM rocker/r-ver:4.0.3
 COPY setup.R .
 RUN Rscript setup.R
 
-# This could be overridden when building, this is the latest stable release of gurobi optimizer 
+# This could be overridden when building, this is the latest stable release 
+# of gurobi optimizer that works with R 
 ARG GRB_VERSION=9.1.2
 ARG GRB_SHORT_VERSION=9.1
 ARG PYTHON_VERSION=3.8

@@ -58,17 +58,21 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 7. Run the container 
    **Note: you will need to change the two -v options before running, please see below for details**:
    ```sh
-   docker run --name designmatch-docker \
-   -v ~/Desktop/designmatch:/HostData \
+   docker run \
+   --name designmatch-docker \
+   -v ~/Users/Sam/dev/designmatch:/HostData \
    -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
    -it \
+   --privileged \
+   --cgroupns=host \
    designmatch-docker
    ```
-    * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, 'Desktop/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
+    * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, '/Users/Sam/dev/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
 
     * **-v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic**: This option is bind-mounting the directory where you saved your gurobi license file to a directory within the container. This parameter should be the name of the directory where the gurobi.lic file is saved, e.g. "-v {saved location}:/opt/gurobi/gurobi.lic"
 
-    
-**Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes.
-
-**TODO: confirm with Jose if he wants an interactive R session to open, or if he wants to be able to run R scripts without running the interactive session**
+8. An interactive R shell will open. **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes. You can now upload/copy any R files into your working directory, then run them using:
+   ```sh
+   > setwd('/HostData/')
+   > source('file_name.R')`
+   ```
