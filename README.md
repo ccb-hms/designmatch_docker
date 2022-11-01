@@ -60,9 +60,9 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    ```sh
    docker run -v ~/Desktop/designmatch:/HostData -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic -it --privileged --cgroupns=host designmatch 
    ```
-    * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, 'Desktop/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v <directory you cloned into>:/HostData".
+    * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, 'Desktop/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
 
-    * **-v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic**: This option is bind-mounting the directory where you saved your gurobi license file to a directory within the container. This parameter should be the name of the directory where the gurobi.lic file is saved, e.g. "-v <saved location>:/opt/gurobi/gurobi.lic"
+    * **-v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic**: This option is bind-mounting the directory where you saved your gurobi license file to a directory within the container. This parameter should be the name of the directory where the gurobi.lic file is saved, e.g. "-v {saved location}:/opt/gurobi/gurobi.lic"
 
     
 **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes.
