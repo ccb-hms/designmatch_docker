@@ -52,13 +52,19 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 
 6. Build the Docker image by running the following command:
    ```sh
-   docker build -t gurobi .
+   docker build -t designmatch-docker .
    ```
    
 7. Run the container 
    **Note: you will need to change the two -v options before running, please see below for details**:
    ```sh
-   docker run -v ~/Desktop/designmatch:/HostData -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic -it --privileged --cgroupns=host designmatch 
+   docker run --name designmatch-docker \
+   -v ~/Desktop/designmatch:/HostData \
+   -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
+   -it \
+   --privileged \
+   --cgroupns=host \
+   designmatch-docker
    ```
     * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, 'Desktop/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
 
