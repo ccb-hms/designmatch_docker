@@ -1,17 +1,17 @@
 #
 # Designmatch / Gurobi Optimizer Docker Image
 # Author: Sam Pullman
-# Copyright: Harvard Medical School
+# Harvard Medical School Center for Computational Biomedicine
 #
-
-FROM rocker/r-ver:4.0.3
+#latest stable release of rocker/r-ver
+FROM rocker/r-ver:4.1.1
 
 COPY setup.R .
 RUN Rscript setup.R
 
-# This could be overridden when building 
-ARG GRB_VERSION=9.1.2
-ARG GRB_SHORT_VERSION=9.1
+# This could be overridden when building, this is the latest stable release of gurobi optimizer 
+ARG GRB_VERSION=9.5.2
+ARG GRB_SHORT_VERSION=9.5
 ARG PYTHON_VERSION=3.8
 
 # based on https://github.com/Gurobi/docker-optimizer/blob/master/9.1.2/Dockerfile
@@ -40,9 +40,6 @@ RUN apt-get update \
 WORKDIR /opt/gurobi/linux64
 RUN python${PYTHON_VERSION} setup.py install
 
-# Add the license key
-COPY gurobi.lic /opt/gurobi/gurobi.lic
-
 # now install the R package
 ENV GUROBI_HOME /opt/gurobi/linux64
 ENV PATH "$PATH:$GUROBI_HOME/bin"
@@ -51,7 +48,6 @@ ENV LD_LIBRARY_PATH $GUROBI_HOME/lib
 #------------------------------------------------------------------------------
 # Install R packages
 #------------------------------------------------------------------------------
-RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.1-2_R_4.0.2.tar.gz",repos = NULL)'
 RUN Rscript -e "install.packages('lattice')"
 RUN Rscript -e "install.packages('mass')"
 RUN Rscript -e "install.packages('slam')"
