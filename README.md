@@ -63,11 +63,8 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    -v ~/Users/Sam/dev/designmatch:/HostData \
    -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
    -it \
-<<<<<<< HEAD
    --privileged \
    --cgroupns=host \
-=======
->>>>>>> 36f7fe083089cc0272f15b241c86d3b2205cb51f
    designmatch-docker
    ```
     * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, '/Users/Sam/dev/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
