@@ -63,6 +63,7 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    -v ~/Users/Sam/dev/designmatch_docker:/HostData \
    -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
    -it \
+   --rm \
    --privileged \
    --cgroupns=host \
    designmatch-docker
