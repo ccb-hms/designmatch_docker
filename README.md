@@ -21,7 +21,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project was created as a way to efficiently supply HMS researchers with the tools they need without spending hours toiling with installing libraries and dependencies. This project is a collaboration between HMS' Center for Computational Biomedicine (CCB) and the center for Health Care Policy (HCP).
+This project was created as a way to efficiently supply researchers with the tools they need without spending hours toiling with installing libraries and dependencies. This project is a collaboration between HMS' Center for Computational Biomedicine (CCB) and the center for Health Care Policy (HCP).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -60,7 +60,7 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    ```sh
    docker run \
    --name designmatch-docker \
-   -v ~/Users/Sam/dev/designmatch:/HostData \
+   -v ~/Users/Sam/dev/designmatch_docker:/HostData \
    -v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
    -it \
    --privileged \
@@ -70,9 +70,10 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
     * **-v ~/Desktop/designmatch:/HostData**: This option is bind-mounting a directory on your local machine (In this case, '/Users/Sam/dev/designmatch') to a directory inside the Docker container. This means that when you complete actions inside the container, those actions are mirrored in your local machine as well. This parameter should be the name of the directory where you have cloned this repository, e.g. "-v {directory you cloned into}:/HostData".
 
     * **-v ~/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic**: This option is bind-mounting the directory where you saved your gurobi license file to a directory within the container. This parameter should be the name of the directory where the gurobi.lic file is saved, e.g. "-v {saved location}:/opt/gurobi/gurobi.lic"
+    * **--privileged and --cgroupns=host**: These are required as the latest versions of some Docker host systems have switched to cgroups v2 which causes a conflict with Gurobi's Web License Service (WLS). This issue is present in all Gurobi versions up to 9.5.0. For details see [Gurobi's Documentation] (https://support.gurobi.com/hc/en-us/articles/4416277022353-Error-10024-Web-license-service-only-available-for-container-environments).
 
-8. An interactive R shell will open. **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes. You can now upload/copy any R files into your working directory, then run them using:
+8. An interactive R shell will open. **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes. To test your installation, run the included sample file using:
    ```sh
    > setwd('/HostData/')
-   > source('file_name.R')`
+   > source('tutorial.R')`
    ```
