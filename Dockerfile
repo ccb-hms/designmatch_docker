@@ -51,7 +51,6 @@ ENV LD_LIBRARY_PATH $GUROBI_HOME/lib
 #------------------------------------------------------------------------------
 RUN Rscript -e 'install.packages("/opt/gurobi/linux64/R/gurobi_9.1-2_R_4.0.2.tar.gz",repos = NULL)'
 RUN Rscript -e "install.packages('lattice')"
-RUN Rscript -e "install.packages('mass')"
 RUN Rscript -e "install.packages('slam')"
 RUN Rscript -e "install.packages('gurobi',dependencies=TRUE, repos='http://cran.rstudio.com/')" 
 RUN R -e "install.packages('designmatch',dependencies=TRUE)"
