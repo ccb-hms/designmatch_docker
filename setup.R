@@ -1,9 +1,6 @@
-mran.date <- "2020-04-28"
+mran.date <- "2022-04-28"
 
 options(repos=paste0("https://cran.microsoft.com/snapshot/",mran.date,"/"))
-
-
-
 
 pkgTest <- function(x,try=FALSE)
 
@@ -31,15 +28,6 @@ pkgTest <- function(x,try=FALSE)
 
 }
 
-
-
-
-
-
-
 global.libraries <- c("abind","coda")
-
-
-
 
 results <- sapply(as.list(global.libraries), pkgTest)
