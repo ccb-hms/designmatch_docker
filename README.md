@@ -37,6 +37,8 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 <!-- Installation -->
 ## Installation
 
+**Note: If this is NOT your first time using this repository, you can skip to step 7. **
+
 1. Clone this repo by navigating into your desired base directory, and executing the following command:
    ```sh
    git clone https://github.com/ccb-hms/designmatch_docker.git
