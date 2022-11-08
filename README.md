@@ -48,7 +48,7 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 
 4. Once logged in to the Web Licensing Service, you will be able to download a gurobi.lic file (necessary to complete this process) by selecting "Licenses" > "Download". Save the file inside of the designmatch directory.
 
-5. Open a terminal.
+5. Open a terminal, and ensure Docker is running.
 
 6. Build the Docker image by running the following command:
    ```sh
@@ -60,8 +60,8 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    ```sh
    docker run \
    --name designmatch-docker \
-   -v /Users/Sam/dev/designmatch_docker:/HostData \
-   -v /Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
+   -v /Users/sam/dev/designmatch_docker:/HostData \
+   -v /Users/sam/Desktop/designmatch/gurobi.lic:/opt/gurobi/gurobi.lic \
    -it \
    --rm \
    --privileged \
@@ -76,5 +76,5 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 8. An interactive R shell will open. **Congratulations!** You are now set up to use and run R, designmatch, and Gurobi for your research purposes. To test your installation, run the included sample file using:
    ```sh
    > setwd('/HostData/')
-   > source('tutorial.R')`
+   > source('tutorial.R')
    ```
