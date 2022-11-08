@@ -5,7 +5,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">Designmatch - Dockerized</h3>
+  <h3 align="center">designmatch - Dockerized</h3>
 
   <p align="center">
     A Dockerized approach for a one-and-done R environment with Gurobi Optimizer and the designmatch R package pre-installed.
