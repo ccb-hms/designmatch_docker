@@ -42,11 +42,11 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    git clone https://github.com/ccb-hms/designmatch_docker.git
    ```
 
-2. Once cloned, head to https://www.gurobi.com/downloads/end-user-license-agreement-academic/ to register for an Academic License of Gurobi Optimizer. 
+2. Once cloned, head to https://pages.gurobi.com/registration/ to register for an Academic License of Gurobi Optimizer. 
 
 3. After you have registered for an academic license, navigate to https://license.gurobi.com/manager/licenses to login. 
 
-4. Once logged in to the Web Licensing Service, you will be able to download a gurobi.lic file (necessary to complete this process) by selecting "Licenses" > "Download". Save the file inside of the designmatch directory.
+4. Once logged in to the Web Licensing Service, you will be able to download a gurobi.lic file (necessary to complete this process) by selecting "Licenses" > "Download". **NOTE:** Remember where you have saved this file, as the location will be referenced later.
 
 5. Open a terminal, and ensure Docker is running.
 
