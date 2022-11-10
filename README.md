@@ -5,10 +5,10 @@
 <br />
 <div align="center">
 
-  <h3 align="center">designmatch - Dockerized</h3>
+  <h3 align="center">designmatch dockerized</h3>
 
   <p align="center">
-    A Dockerized approach for a one-and-done R environment with Gurobi Optimizer and the designmatch R package pre-installed.
+    A Docker one-and-done approach to easily install and work with the designmatch package and the Gurobi optimizer in R.
     <br />
     <br />
     <a href="https://github.com/ccb-hms/designmatch_docker/issues">Report Bug</a>
@@ -19,9 +19,9 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About the Project
 
-This project was created as a way to efficiently supply researchers with the tools they need without spending hours toiling with installing libraries and dependencies. This project is a collaboration between HMS' Center for Computational Biomedicine (CCB) and the center for Health Care Policy (HCP).
+This project was created simplify the installation and use of the designmatch package for R, without separately installing the required libraries and dependencies. This project is a collaboration between the Center for Computational Biomedicine (CCB) and Department of Health Care Policy (HCP) at Harvard Medical School.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -35,24 +35,22 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- Installation -->
-## Installation
+## Installing designmatch and its dependencies
 
-**Note: If this is NOT your first time using this repository, you can skip to step 7. **
-
-1. Clone this repo by navigating into your desired base directory, and executing the following command:
+1. Select a working directory, open a terminal, and execute the following command:
    ```sh
    git clone https://github.com/ccb-hms/designmatch_docker.git
    ```
 
-2. Once cloned, head to https://pages.gurobi.com/registration/ to register for an Academic License of Gurobi Optimizer. 
+2. Go to https://pages.gurobi.com/registration/ to register for an Academic License of Gurobi Optimizer. If you are already registered for an academic license, continue to step 3.
 
 3. After you have registered for an academic license, navigate to https://license.gurobi.com/manager/licenses to login. 
 
-4. Once logged in to the Web Licensing Service, you will be able to download a gurobi.lic file (necessary to complete this process) by selecting "Licenses" > "Download". **NOTE:** Remember where you have saved this file, as the location will be referenced later.
+4. Once logged in to the Web Licensing Service, you will be able to download a gurobi.lic file (necessary to complete this process) by selecting "Licenses" > "Download". If you already have an academic license, it will ask if you'd like to create a new one, answer YES. **NOTE:** Remember where you have saved this file, as the location will be referenced later.
 
-5. Open a terminal, and ensure Docker is running.
+5. Open the Docker application. No actions need to be take, the program just needs to be running.
 
-6. Build the Docker image by running the following command:
+6. Build the Docker image by running the following command in your terminal:
    ```sh
    docker build -t designmatch-docker .
    ```
