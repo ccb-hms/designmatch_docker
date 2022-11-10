@@ -55,6 +55,9 @@ with Docker is not a necessarry prerequisite to running this code, but will be h
    docker build -t designmatch-docker .
    ```
    
+<!-- Using designmatch -->
+## Using designmatch
+
 7. Run the container 
    **Note: you will need to change the two -v options before running, please see below for details**:
    ```sh
